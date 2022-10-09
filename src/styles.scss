@@ -1,0 +1,18 @@
+@import 'node_modules/angular-notifier/styles';
+
+// custom variables
+$light: white;
+$dark: #302b63;
+$input-btn-focus-color: #8f94fb;
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.neutralButton {
+  border: none;
+  background: none;
+}
+
+body {
+  background-image: linear-gradient(90deg, #C3F8FF, #ABD9FF);
+}

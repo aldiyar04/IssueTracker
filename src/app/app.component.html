@@ -1,0 +1,70 @@
+<main *ngIf="isLoggedIn === false; else templateForLoggedIn" class="container">
+    <div class="row d-flex justify-content-center align-items-center vh-100">
+      <div class="col-md-5 shadow bg-light pt-4 pb-3 px-5">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</main>
+
+<ng-template #templateForLoggedIn>
+  <main class="min-vh-100 d-flex flex-column justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-4 px-3 mb-5">
+        <div class="container-fluid d-flex justify-content-between">
+            <a routerLink="/" class="navbar-brand">Issue Tracker</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navbarNav" class="collapse navbar-collapse">
+                <!-- <ul class="navbar-nav ms-0">
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link">
+                            Projects
+                        </a>
+                    </li>
+                </ul> -->
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-3">
+                        <a href="#" class="nav-link ps-0" id="notif">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-bell-fill" viewBox="0 0 17 17">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                            </svg>
+                            <span id="notifCircle" class="badge badge-danger"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-flex align-items-center">
+                        <button class="neutralButton" data-bs-toggle="dropdown">
+                            <img src="/assets/img/account-icon.svg" width="25px" height="25px">
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li class="dropdown-item bg-transparent fw-bold">{{user.username}}</li>
+                          <li *ngIf="user.role === UserRole.ADMIN" class="dropdown-item text-danger bg-transparent">{{user.role}}</li>
+                          <li *ngIf="user.role === UserRole.MANAGER" class="dropdown-item text-warning bg-transparent">{{user.role}}</li>
+                          <li *ngIf="user.role === UserRole.LEAD_DEV" class="dropdown-item text-success bg-transparent">{{user.role}}</li>
+                          <li *ngIf="user.role === UserRole.DEVELOPER" class="dropdown-item bg-transparent">{{user.role}}</li>
+
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" (click)="logout()">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 mt-4 bg-light">
+        <p class="text-muted mb-0">© 2022 IITU. All Rights Reserved</p>
+    </footer>
+  </main>
+</ng-template>
+
+<notifier-container></notifier-container>
+
